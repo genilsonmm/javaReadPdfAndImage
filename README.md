@@ -1,1 +1,1 @@
-# javaReadPdfAndImage
+# Ler texto de PDF ou Imagens
