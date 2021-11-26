@@ -3,6 +3,7 @@
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.translate.AmazonTranslate;
 import com.amazonaws.services.translate.AmazonTranslateClient;
 import com.amazonaws.services.translate.model.TranslateTextRequest;
@@ -57,7 +58,7 @@ public class Application {
         try {
             // Create credentials using a provider chain. For more information, see
             // https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
-            AWSCredentialsProvider awsCreds = DefaultAWSCredentialsProviderChain.getInstance();
+            AWSCredentialsProvider awsCreds = new ProfileCredentialsProvider("TestSDK");
 
             AmazonTranslate translate = AmazonTranslateClient.builder()
                     .withCredentials(new AWSStaticCredentialsProvider(awsCreds.getCredentials()))
